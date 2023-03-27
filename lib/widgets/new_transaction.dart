@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../widgets/adaptive_flat_button.dart';
+
 class NewTransaction extends StatefulWidget {
   final Function addTx;
 
@@ -78,28 +80,16 @@ class _NewTransactionState extends State<NewTransaction> {
               ),
               Container(
                 height: 70,
-                child: Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: Text(
-                        _selectedDate == null
-                            ? 'No Date Chosen'
-                            : 'Picked Date: ${DateFormat.yMd().format(_selectedDate)}',
-                      ),
+                child: Row(children: <Widget>[
+                  Expanded(
+                    child: Text(
+                      _selectedDate == null
+                          ? 'No Date Chosen'
+                          : 'Picked Date: ${DateFormat.yMd().format(_selectedDate)}',
                     ),
-                    TextButton(
-                      child: Text(
-                        'Choose Date',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      style:
-                          TextButton.styleFrom(foregroundColor: Colors.purple),
-                      onPressed: _presentDatePicker,
-                    ),
-                  ],
-                ),
+                  ),
+                  AdaptiveFlatButton('Choose Date', _presentDatePicker)
+                ]),
               ),
               ElevatedButton(
                 child: Text(
